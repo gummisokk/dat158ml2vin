@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 import streamlit as st
 import base64
 from sklearn.model_selection import train_test_split
@@ -113,16 +111,3 @@ if stsmak.button("smak på vinen"):
         score = rwmodel.predict([[fa,va,ca,rs,ch,fs,ts,de,ph,sp,al]])
         stsmak.write(f"mmm, eg gir dinna ein {score[0]}")
     
-
-
-
-
-
-#predictions = [cross_val_pred]
-#classifier_names = ["Random Forest"]
-
-#fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-#for i, (prediction, classifier_name) in enumerate(zip(predictions, classifier_names)):
-#    ConfusionMatrixDisplay.from_predictions(y_train, prediction, ax=axes[i])
-#    axes[i].set_title(classifier_name)
-#plt.show()
