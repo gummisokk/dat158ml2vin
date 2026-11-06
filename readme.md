@@ -12,3 +12,7 @@ pip install scikit-learn
 ```
 streamlit run vin.py
 ```
+
+# link
+
+https://dat158ml2vin.streamlit.app/
