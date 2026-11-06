@@ -39,6 +39,12 @@ stred.write(f"test set accuracy: {accuracy_score(rwy_test, rwtest_pred)}")
 stred.write("test set forvirringsmatrise :")
 stred.table(confusion_matrix(rwy_test, rwtest_pred))
 
+stred.write("dataset info")
+stred.write("max: ")
+stred.write(red_wine.max())
+stred.write("min: ")
+stred.write(red_wine.min())
+
 
 #white wine model
 
@@ -64,24 +70,28 @@ stwhite.write(f"test set accuracy: {accuracy_score(wwy_test, wwtest_pred)})")
 stwhite.write("test set forvirringsmatrise :")
 stwhite.table(confusion_matrix(wwy_test, wwtest_pred))
 
-
+stwhite.write("dataset info")
+stwhite.write("max: ")
+stwhite.write(white_wine.max())
+stwhite.write("min: ")
+stwhite.write(white_wine.min())
 
 # "main gui"
 
 stsmak.title("Vinsmakaren")
 
 color = stsmak.segmented_control("Farge", ["Kvit", "Raud"])
-fa = stsmak.slider("fixed acidity"       , 0.0, 10.0 , 7.0 , 0.1)
-va = stsmak.slider("volatile acidity"    , 0.0, 1.0  , 0.3 , 0.01)
-ca = stsmak.slider("citric acid"         , 0.0, 1.0  , 0.3 , 0.01)
-rs = stsmak.slider("residual sugar"      , 0.0, 30.0 , 10.0, 0.1)
-ch = stsmak.slider("chlorids"            , 0.0, 1.0  , 0.05, 0.001)
+fa = stsmak.slider("fixed acidity"       , 3.0, 16.0 , 7.0 , 0.1)
+va = stsmak.slider("volatile acidity"    , 0.0, 1.6  , 0.3 , 0.01)
+ca = stsmak.slider("citric acid"         , 0.0, 2.0  , 0.3 , 0.01)
+rs = stsmak.slider("residual sugar"      , 0.0, 70.0 , 10.0, 0.1)
+ch = stsmak.slider("chlorids"            , 0.0, 0.7  , 0.05, 0.001)
 fs = stsmak.slider("free sulfur dioxide" , 0.0, 300.0, 40.0, 1.0)
-ts = stsmak.slider("total sulfur dioxide", 0.0, 300.0, 80.0, 1.0)
-de = stsmak.slider("density"             , 0.0, 2.0  , 1.0 , 0.0001)
-ph = stsmak.slider("pH"                  , 0.0, 14.0 , 3.25, 0.01)
-sp = stsmak.slider("sulphates"           , 0.0, 1.0  , 0.5 , 0.01)
-al = stsmak.slider("alcohol"             , 0.0, 40.0 , 10.0, 0.1)
+ts = stsmak.slider("total sulfur dioxide", 0.0, 450.0, 80.0, 1.0)
+de = stsmak.slider("density"             , 0.9500, 1.0500  , 1.000 , 0.0001, format="plain")
+ph = stsmak.slider("pH"                  , 2.0, 5.0 , 3.25, 0.01)
+sp = stsmak.slider("sulphates"           , 0.0, 2.0  , 0.5 , 0.01)
+al = stsmak.slider("alcohol"             , 0.0, 20.0 , 10.0, 0.1)
 
 tomtglass = Image.open("kunst/tomtglass.png");
 img = stsmak.image(tomtglass)
@@ -111,3 +121,4 @@ if stsmak.button("smak på vinen"):
         score = rwmodel.predict([[fa,va,ca,rs,ch,fs,ts,de,ph,sp,al]])
         stsmak.write(f"mmm, eg gir dinna ein {score[0]}")
     
+
