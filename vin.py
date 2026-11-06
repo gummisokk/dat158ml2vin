@@ -6,7 +6,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import confusion_matrix
-from sklearn.metrics import ConfusionMatrixDisplay
+from sklearn.metrics import mean_squared_error
+
 from PIL import Image
 
 red_wine = pd.read_csv("data/winequality-red.csv", sep=';')
@@ -36,6 +37,7 @@ stred.table(confusion_matrix(rwy_train, rw_cvp))
 
 rwtest_pred = rwmodel.predict(rwx_test)
 stred.write(f"test set accuracy: {accuracy_score(rwy_test, rwtest_pred)}")
+stred.write(f"test set mean square error: {mean_squared_error(rwy_test, rwtest_pred)})")
 stred.write("test set forvirringsmatrise :")
 stred.table(confusion_matrix(rwy_test, rwtest_pred))
 
@@ -67,6 +69,7 @@ stwhite.table(confusion_matrix(wwy_train, ww_cvp))
 
 wwtest_pred = wwmodel.predict(wwx_test)
 stwhite.write(f"test set accuracy: {accuracy_score(wwy_test, wwtest_pred)})")
+stwhite.write(f"test set mean square error: {mean_squared_error(wwy_test, wwtest_pred)})")
 stwhite.write("test set forvirringsmatrise :")
 stwhite.table(confusion_matrix(wwy_test, wwtest_pred))
 
